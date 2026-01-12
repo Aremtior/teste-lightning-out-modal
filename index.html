@@ -11,6 +11,13 @@
     <style>
         body { padding: 20px; background-color: #f3f3f3; }
         #lightning-container { max-width: 800px; margin: 0 auto; }
+        .slds-notify_container {
+            position: fixed !important;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10000 !important; /* Maior que o modal */
+        }
     </style>
 </head>
 <body>
