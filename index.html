@@ -2,16 +2,43 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Teste Modal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Lightning Out - Modal Flow</title>
 
+    <!-- 1. CARREGAR O CSS DO SALESFORCE (Necessário para o Modal funcionar) -->
+    <link rel="stylesheet" href="cdnjs.cloudflare.com" />
+    
     <style>
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; padding: 20px; background-color: #f4f7f9; }
-        .header { text-align: center; margin-bottom: 30px; }
+        body { padding: 20px; background-color: #f3f3f3; }
+        #lightning-container { max-width: 800px; margin: 0 auto; }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>Alterar cadastro Contato</h1>
+
+    <!-- 2. CONTAINER ONDE O LWC SERÁ RENDERIZADO -->
+    <div id="lightning-container">
+        <p>Carregando lista de contatos...</p>
     </div>
+
+    <!-- 3. SCRIPT DO LIGHTNING OUT (Substitua pela URL do seu ambiente/site) -->
+    <script src="https://creative-otter-3dbvzj-dev-ed.trailblaze.my.site.com/portalaura/lightning/lightning.out.js"></script>
+
+    <script>
+        // Configurações do ambiente
+        // A URL deve ser a do seu site de Guest User (Digital Experience)
+        const siteUrl = 'https://creative-otter-3dbvzj-dev-ed.trailblaze.my.site.com/portalaura';
+        const appName = 'c:contatosApp'; // Nome do seu Lightning App que estende ltng:outApp
+
+        $Lightning.use(appName, function() {
+            $Lightning.createComponent(
+                "c:contactList", // Nome do seu componente LWC
+                {}, // Atributos iniciais (vazio por enquanto)
+                "lightning-container", // ID da div acima
+                function(cmp) {
+                    console.log("LWC carregado com sucesso na página externa.");
+                }
+            );
+        }, siteUrl);
+    </script>
 </body>
 </html>
